@@ -8,7 +8,7 @@ app.use(express.json())
 let tasks = [
     {id: 1, title: "Learn Node.js", completed: false, priority: "high"},
     {id: 2, title: "Build first API", completed: true, priority: "medium"},
-    {id: 2, title: "Turn on the PC", completed: true, priority: "low"}
+    {id: 3, title: "Turn on the PC", completed: true, priority: "low"}
 ]
 
 app.get('/', (req, res) => {
@@ -163,8 +163,8 @@ app.delete("/tasks/:id", (req,res) => {
     res.status(204).send()
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello in Express!')
+app.use((req, res) => {
+    res.status(404).json({message: "Route not found"})
 })
 
 app.listen(PORT, () => {
